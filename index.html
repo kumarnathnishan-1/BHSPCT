@@ -904,14 +904,14 @@
         const fbSubmitBtn = document.getElementById('fb-submit-btn');
 
         // IMPORTANT: Replace this URL with your Google Apps Script Web App URL
-        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzQ4YDSduPsLVZHvKrwNfWSTL7O7i--S4a5mgtlJAZJ0AQYSZJd_p19RArS08l69Xng/exec';
 
         if(feedbackForm) {
             feedbackForm.addEventListener('submit', e => {
                 e.preventDefault();
                 
                 // Optional: Check if URL has been replaced
-                if(scriptURL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                if(scriptURL === 'https://script.google.com/macros/s/AKfycbzQ4YDSduPsLVZHvKrwNfWSTL7O7i--S4a5mgtlJAZJ0AQYSZJd_p19RArS08l69Xng/exec') {
                     fbStatus.classList.remove('hidden', 'bg-green-500/20', 'text-green-400', 'border-green-500/50');
                     fbStatus.classList.add('bg-red-500/20', 'text-red-400', 'border-red-500/50');
                     fbStatus.innerHTML = '<i class="fa-solid fa-triangle-exclamation mr-1"></i> Developer Notice: Google Sheets Web App URL missing.';
