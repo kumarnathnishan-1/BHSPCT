@@ -406,7 +406,7 @@
                 </div>
 
                 <!-- Grid for Notices: Add as many as you want here! -->
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-max fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 auto-rows-max">
                     
                     <!-- Example 1: Text Notice -->
                     <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-gold/30 bg-black/40 shadow-lg relative group hover:-translate-y-2 transition-transform duration-300">
@@ -480,7 +480,7 @@
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 fade-in">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                     <!-- Feedback Card 1 -->
                     <div class="glass-panel p-6 sm:p-8 rounded-3xl relative group hover:-translate-y-2 transition-transform duration-300 border border-gold/20 hover:border-gold/50 bg-black/40 shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                         <i class="fa-solid fa-quote-left text-3xl sm:text-4xl text-gold/10 absolute top-6 left-6 transition-colors group-hover:text-gold/20"></i>
@@ -502,7 +502,8 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- === MEMBERS RANK & COMMITTEE SECTION === -->
@@ -520,7 +521,7 @@
                 </div>
 
                 <!-- Grid for Members Showcase -->
-                <div id="members-rank-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 fade-in">
+                <div id="members-rank-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
                     <!-- Dynamically populated by JS -->
                 </div>
             </div>
@@ -1173,27 +1174,27 @@
          */
         window.membersData = [
             { order: 1, stars: 1, name: "Saikat Dey", position: "Convener", bloodGroup: "O-", number: "01872666349", img: "saikat.jpeg", fallbackColor: "8B0000" },
-            { order: 3, stars: 1, name: "Rudhra Chakraborty", position: "Joint Convener", bloodGroup: "A+", number: "01602056654", img: "rudhra.jpeg", fallbackColor: "8B0000" },
-            { order: 2, stars: 1, name: "Nishan Kumar Nath", position: "Joint Member Secretary", bloodGroup: "O+", number: "01881876213", img: "nishan.jpeg", fallbackColor: "8B0000" },
-            { order: 4, stars: 1, name: "Aushman Chowdhury", position: "Joint Member Secretary", bloodGroup: "Pending", number: "Pending...", img: "aushman.jpeg", fallbackColor: "8B0000" },
-            { order: 5, stars: 1, name: "Hrithik Chowdhury", position: "Finance Secretary", bloodGroup: "B+", number: "01806294143", img: "hrithik.jpeg", fallbackColor: "8B0000" },
-            { order: 6, stars: 1, name: "Diganta Aich", position: "Joint Finance Secretary", bloodGroup: "B+", number: "01685466865", img: "diganta.jpeg", fallbackColor: "8B0000" },
-            { order: 7, stars: 1, name: "Avi Dey", position: "Working member", bloodGroup: "A+", number: "01830851006", img: "avi.jpeg", fallbackColor: "8B0000" },
-            { order: 8, stars: 1, name: "Papiya Paul", position: "Working member", bloodGroup: "A+", number: "Pending...", img: "papiya.jpeg", fallbackColor: "8B0000" },
-            { order: 9, stars: 1, name: "Oporna Das", position: "Working member", bloodGroup: "B+", number: "Pending...", img: "oporna.jpeg", fallbackColor: "8B0000" },
-            { order: 10, stars: 1, name: "Arpita Bhattacharjee", position: "Working member", bloodGroup: "AB+", number: "Pending...", img: "arpita.jpeg", fallbackColor: "8B0000" },
-            { order: 11, stars: 1, name: "Divyaraj Dhar", position: "Working member", bloodGroup: "AB+", number: "01603101969", img: "divyaraj.jpeg", fallbackColor: "8B0000" },
-            { order: 12, stars: 1, name: "Raj Chakraborty", position: "Working member", bloodGroup: "O+", number: "01890999484", img: "raj.jpeg", fallbackColor: "8B0000" },
-            { order: 13, stars: 1, name: "Durjoy Dev Nath", position: "Working member", bloodGroup: "Pending", number: "Pending...", img: "durjoy.jpeg", fallbackColor: "8B0000" },
-            { order: 14, stars: 1, name: "Sanjoy Das", position: "Working member", bloodGroup: "AB+", number: "01866263199", img: "sanjoy.jpeg", fallbackColor: "8B0000" },
-            { order: 15, stars: 0, name: "Sarnab Bhattacharjee", position: "Website Creator", bloodGroup: "Pending", number: "Pending...", img: "sarnab.gif", fallbackColor: "8B0000" },
-            { order: 16, stars: 1, name: "Mohan Dey Arko", position: "Member", bloodGroup: "A+", number: "01612923854", img: "mohan.jpeg", fallbackColor: "8B0000" },
-            { order: 17, stars: 1, name: "Niloy Das", position: "Member", bloodGroup: "B+", number: "01406072249", img: "", fallbackColor: "8B0000" },
-            { order: 18, stars: 1, name: "Pritom Datta", position: "Member", bloodGroup: "O+", number: "01881298936", img: "", fallbackColor: "8B0000" },
-            { order: 19, stars: 1, name: "Rajat Das", position: "Member", bloodGroup: "A+", number: "01835539035", img: "", fallbackColor: "8B0000" },
-            { order: 20, stars: 1, name: "Swaccha Paul", position: "Member", bloodGroup: "A+", number: "01850261423", img: "", fallbackColor: "8B0000" },
-            { order: 21, stars: 1, name: "Sushanta Roy Chy", position: "Member", bloodGroup: "B+", number: "01844854066", img: "", fallbackColor: "8B0000" },
-            { order: 22, stars: 1, name: "Prachurja Mohajan", position: "Member", bloodGroup: "A-", number: "01836346651", img: "", fallbackColor: "8B0000" }
+            { order: 2, stars: 5, name: "Rudhra Chakraborty", position: "Joint Convener", bloodGroup: "A+", number: "01602056654", img: "rudhra.jpeg", fallbackColor: "8B0000" },
+            { order: 3, stars: 4.5, name: "Nishan Kumar Nath", position: "Joint Member Secretary", bloodGroup: "O+", number: "01881876213", img: "nishan.jpeg", fallbackColor: "8B0000" },
+            { order: 4, stars: 4.5, name: "Aushman Chowdhury", position: "Joint Member Secretary", bloodGroup: "Pending", number: "Pending...", img: "aushman.jpeg", fallbackColor: "8B0000" },
+            { order: 5, stars: 4.5, name: "Hrithik Chowdhury", position: "Finance Secretary", bloodGroup: "B+", number: "01806294143", img: "hrithik.jpeg", fallbackColor: "8B0000" },
+            { order: 6, stars: 4, name: "Diganta Aich", position: "Joint Finance Secretary", bloodGroup: "B+", number: "01685466865", img: "diganta.jpeg", fallbackColor: "8B0000" },
+            { order: 7, stars: 4, name: "Avi Dey", position: "Working member", bloodGroup: "A+", number: "01830851006", img: "avi.jpeg", fallbackColor: "8B0000" },
+            { order: 8, stars: 4, name: "Papiya Paul", position: "Working member", bloodGroup: "A+", number: "Pending...", img: "papiya.jpeg", fallbackColor: "8B0000" },
+            { order: 9, stars: 4, name: "Oporna Das", position: "Working member", bloodGroup: "B+", number: "Pending...", img: "oporna.jpeg", fallbackColor: "8B0000" },
+            { order: 10, stars: 4, name: "Arpita Bhattacharjee", position: "Working member", bloodGroup: "AB+", number: "Pending...", img: "arpita.jpeg", fallbackColor: "8B0000" },
+            { order: 11, stars: 4, name: "Divyaraj Dhar", position: "Working member", bloodGroup: "AB+", number: "01603101969", img: "divyaraj.jpeg", fallbackColor: "8B0000" },
+            { order: 12, stars: 4, name: "Raj Chakraborty", position: "Working member", bloodGroup: "O+", number: "01890999484", img: "raj.jpeg", fallbackColor: "8B0000" },
+            { order: 13, stars: 4, name: "Durjoy Dev Nath", position: "Working member", bloodGroup: "Pending", number: "Pending...", img: "durjoy.jpeg", fallbackColor: "8B0000" },
+            { order: 14, stars: 4, name: "Sanjoy Das", position: "Working member", bloodGroup: "Pending", number: "Pending...", img: "sanjoy.jpeg", fallbackColor: "8B0000" },
+            { order: 15, stars: 5, name: "Sarnab Bhattacharjee", position: "Website Creator", bloodGroup: "Pending", number: "Pending...", img: "sarnab.gif", fallbackColor: "8B0000" },
+            { order: 16, stars: 4, name: "Mohan Dey Arko", position: "Member", bloodGroup: "A+", number: "01612923854", img: "mohan.jpeg", fallbackColor: "8B0000" },
+            { order: 17, stars: 4, name: "Niloy Das", position: "Member", bloodGroup: "B+", number: "01406072249", img: "", fallbackColor: "8B0000" },
+            { order: 18, stars: 4, name: "Pritom Datta", position: "Member", bloodGroup: "O+", number: "01881298936", img: "", fallbackColor: "8B0000" },
+            { order: 19, stars: 4, name: "Rajat Das", position: "Member", bloodGroup: "A+", number: "01835539035", img: "", fallbackColor: "8B0000" },
+            { order: 20, stars: 4, name: "Swaccha Paul", position: "Member", bloodGroup: "A+", number: "01850261423", img: "", fallbackColor: "8B0000" },
+            { order: 21, stars: 4, name: "Sushanta Roy Chy", position: "Member", bloodGroup: "B+", number: "01844854066", img: "", fallbackColor: "8B0000" },
+            { order: 22, stars: 4, name: "Prachurja Mohajan", position: "Member", bloodGroup: "A-", number: "01836346651", img: "", fallbackColor: "8B0000" }
         ];
 
         // ==========================================
@@ -1571,7 +1572,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.05 });
         document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
         window.addEventListener('scroll', () => {
