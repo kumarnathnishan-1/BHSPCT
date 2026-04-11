@@ -1,1 +1,506 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Symphony of Purusha and Prakriti - BHSPCT</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --ink: #2b1708; /* Deep sepia/brown ink */
+            --highlight: #990000; /* Rich crimson */
+            --gold: #dfb15b;
+            --gold-glow: rgba(223, 177, 91, 0.6);
+            --bg-temple: #050301;
+            --paper-bg: #e8dcc4;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--bg-temple);
+            color: var(--ink);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- 1. AMBIENT TEMPLE ENVIRONMENT --- */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 50% 0%, rgba(223, 177, 91, 0.05) 0%, transparent 60%),
+                radial-gradient(circle at 50% 100%, rgba(153, 0, 0, 0.05) 0%, transparent 60%);
+            z-index: -2;
+        }
+
+        .dust-particle {
+            position: fixed;
+            background: radial-gradient(circle, var(--gold) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: float-dust linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes float-dust {
+            0% { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+            20% { opacity: 0.6; }
+            80% { opacity: 0.4; }
+            100% { transform: translateY(-20vh) translateX(50px) scale(2); opacity: 0; }
+        }
+
+        /* --- 2. THE SACRED PARCHMENT --- */
+        .manuscript-container {
+            position: relative;
+            max-width: 900px;
+            margin: 120px auto 80px auto;
+            z-index: 10;
+        }
+
+        .parchment {
+            position: relative;
+            background-color: var(--paper-bg);
+            /* Complex layered texture for realistic paper */
+            background-image: 
+                radial-gradient(circle at center, rgba(255,255,255,0.4) 0%, rgba(0,0,0,0.05) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            box-shadow: 
+                0 30px 60px rgba(0,0,0,0.8),
+                0 0 100px rgba(223, 177, 91, 0.1), /* Golden aura */
+                inset 0 0 80px rgba(100, 50, 10, 0.2), /* Burned edges */
+                inset 0 0 20px rgba(100, 50, 10, 0.4);
+            border-radius: 4px;
+            padding: 80px 10%;
+            z-index: 20;
+        }
+
+        /* The Ink Effect */
+        .ink-text {
+            mix-blend-mode: multiply; /* Makes text look like ink soaked into paper */
+            text-shadow: 0px 0px 1px rgba(43, 23, 8, 0.3);
+        }
+
+        h1, h2, h3, .heading-font {
+            font-family: 'Cinzel Decorative', serif;
+            text-align: center;
+        }
+
+        /* Elaborate Illuminated Drop Cap */
+        .illuminated-letter {
+            float: left;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 7rem;
+            line-height: 0.75;
+            padding: 10px 15px 5px 0;
+            color: var(--highlight);
+            text-shadow: 2px 2px 0px rgba(223, 177, 91, 0.8), 4px 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        .illuminated-letter::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -10px; right: 5px; bottom: -5px;
+            background: radial-gradient(circle, rgba(223, 177, 91, 0.2) 0%, transparent 70%);
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        p {
+            font-size: 1.35rem;
+            line-height: 1.9;
+            margin-bottom: 2.2rem;
+            text-align: justify;
+        }
+
+        /* Cinematic Blur Reveal Animation */
+        .reveal-text {
+            opacity: 0;
+            filter: blur(10px);
+            transform: translateY(30px);
+            transition: opacity 1s ease-out, filter 1.2s ease-out, transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal-text.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0);
+        }
+
+        /* --- 3. INTERACTIVE MYSTIC WORDS (TOOLTIPS) --- */
+        .mystic-word {
+            color: var(--highlight);
+            font-weight: 600;
+            position: relative;
+            cursor: help;
+            border-bottom: 2px dotted var(--gold);
+            transition: all 0.3s ease;
+        }
+        .mystic-word:hover {
+            color: var(--ink);
+            background-color: rgba(223, 177, 91, 0.2);
+            text-shadow: 0 0 8px var(--gold-glow);
+        }
+        
+        /* Tooltip Box */
+        .mystic-word::after {
+            content: attr(data-meaning);
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) scale(0.95);
+            width: max-content;
+            max-width: 250px;
+            background: rgba(10, 6, 4, 0.95);
+            color: var(--gold);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5), 0 0 15px var(--gold-glow);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            z-index: 100;
+            line-height: 1.4;
+            backdrop-filter: blur(5px);
+        }
+        /* Tooltip Arrow */
+        .mystic-word::before {
+            content: '';
+            position: absolute;
+            bottom: 110%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--gold) transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .mystic-word:hover::after, .mystic-word:hover::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+
+        /* --- 4. THE CHAKRA ALIGNMENT TRACKER --- */
+        .chakra-tracker {
+            position: absolute;
+            left: -80px;
+            top: 100px;
+            bottom: 100px;
+            width: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 30;
+        }
+
+        .nadi-channel {
+            position: absolute;
+            top: 15px; bottom: 15px; left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            background-color: rgba(223, 177, 91, 0.2);
+            z-index: 0;
+        }
+        
+        .prana-flow {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            width: 100%;
+            height: 0%; /* Controlled by JS */
+            background: linear-gradient(to bottom, transparent, var(--gold), #fff);
+            box-shadow: 0 0 15px var(--gold);
+            transition: height 0.1s ease-out;
+        }
+
+        .chakra {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            background-color: var(--bg-temple);
+            border: 2px solid rgba(223, 177, 91, 0.3);
+            border-radius: 50%;
+            z-index: 1;
+            transition: all 0.8s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chakra::after {
+            content: 'ॐ';
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 10px;
+            color: transparent;
+            transition: color 0.5s ease;
+        }
+        
+        /* Activated Chakra States */
+        .chakra.active {
+            border-color: var(--gold);
+            background-color: var(--bg-temple);
+            transform: scale(1.3);
+        }
+        .chakra.active::after { color: var(--gold); }
+        
+        /* Specific Chakra Glow Colors */
+        .chakra[data-color="violet"].active { box-shadow: 0 0 20px #8a2be2; border-color: #8a2be2; }
+        .chakra[data-color="indigo"].active { box-shadow: 0 0 20px #4b0082; border-color: #4b0082; }
+        .chakra[data-color="blue"].active { box-shadow: 0 0 20px #00bfff; border-color: #00bfff; }
+        .chakra[data-color="green"].active { box-shadow: 0 0 20px #00ff00; border-color: #00ff00; }
+        .chakra[data-color="yellow"].active { box-shadow: 0 0 20px #ffd700; border-color: #ffd700; }
+        .chakra[data-color="orange"].active { box-shadow: 0 0 20px #ff8c00; border-color: #ff8c00; }
+        .chakra[data-color="red"].active { box-shadow: 0 0 20px #ff0000; border-color: #ff0000; }
+
+
+        /* Divine Separator */
+        .mandala-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3.5rem 0;
+        }
+        .mandala-divider::before, .mandala-divider::after {
+            content: '';
+            height: 1px;
+            width: 25%;
+            background: linear-gradient(to right, transparent, rgba(139, 0, 0, 0.5), transparent);
+        }
+        .mandala-divider i {
+            color: var(--highlight);
+            font-size: 1.8rem;
+            margin: 0 20px;
+            animation: spin-slow 20s linear infinite;
+        }
+
+        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 1024px) {
+            .chakra-tracker { display: none; /* Hide tracker on smaller screens */ }
+            .parchment { padding: 50px 6%; margin: 80px 15px 40px 15px; }
+            .illuminated-letter { font-size: 5.5rem; }
+            p { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Magic -->
+    <div class="ambient-bg"></div>
+    <div id="particles"></div>
+
+    <!-- Floating Glass Header -->
+    <div class="fixed top-0 w-full z-[60] p-4 sm:p-6 flex justify-between items-center pointer-events-none">
+        <a href="index.html" class="pointer-events-auto flex items-center gap-2 text-gold hover:text-white transition-colors font-bold uppercase tracking-widest text-[10px] sm:text-xs drop-shadow-md bg-black/80 px-4 sm:px-6 py-2.5 rounded-full border border-gold/40 backdrop-blur-md shadow-[0_0_15px_rgba(223,177,91,0.2)] hover:shadow-[0_0_25px_rgba(223,177,91,0.5)]">
+            <i class="fa-solid fa-arrow-left"></i> Return to Main Hall
+        </a>
+        <div class="pointer-events-auto bg-black/80 px-4 sm:px-6 py-2.5 rounded-full border border-gold/40 backdrop-blur-md text-gold text-[10px] sm:text-xs uppercase tracking-widest flex items-center gap-2 shadow-[0_0_15px_rgba(223,177,91,0.2)]">
+            <i class="fa-solid fa-book-open-reader"></i> Wisdom Archive
+        </div>
+    </div>
+
+    <!-- The Manuscript -->
+    <div class="manuscript-container">
+        
+        <!-- Left Chakra Tracker (Desktop Only) -->
+        <div class="chakra-tracker hidden lg:flex" id="tracker">
+            <div class="nadi-channel"><div class="prana-flow" id="prana-flow"></div></div>
+            <div class="chakra" data-color="violet"></div> <!-- Crown -->
+            <div class="chakra" data-color="indigo"></div> <!-- Third Eye -->
+            <div class="chakra" data-color="blue"></div>   <!-- Throat -->
+            <div class="chakra" data-color="green"></div>  <!-- Heart -->
+            <div class="chakra" data-color="yellow"></div> <!-- Solar Plexus -->
+            <div class="chakra" data-color="orange"></div> <!-- Sacral -->
+            <div class="chakra" data-color="red"></div>    <!-- Root -->
+        </div>
+
+        <article class="parchment ink-text" id="scroll-content">
+            
+            <!-- Title Section -->
+            <div class="text-center mb-16 reveal-text">
+                <span class="text-[10px] sm:text-xs font-bold uppercase tracking-[0.4em] text-[#8b0000] mb-6 block border-b border-[#8b0000]/20 pb-4 max-w-xs mx-auto">Chronicle One</span>
+                <h1 class="text-4xl sm:text-5xl md:text-6xl font-black mb-6 leading-[1.1] text-[var(--ink)]">The Symphony of<br>Purusha & Prakriti</h1>
+                <h2 class="text-lg sm:text-xl md:text-2xl italic font-medium text-[#5c3a21] font-serif">Decoding the profound connection between the Mind and the Physical Vessel.</h2>
+                <div class="mandala-divider">
+                    <i class="fa-solid fa-dharmachakra"></i>
+                </div>
+            </div>
+
+            <!-- Content Section -->
+            <p class="reveal-text">
+                <span class="illuminated-letter">F</span>or millennia, modern science and ancient spirituality seemed to walk on parallel paths, never destined to meet. Western medicine long viewed the human body as a complex, biological machine—a system of gears, pumps, and wires functioning independently of our thoughts and emotions. Yet, deeply hidden within the sacred texts of <span class="mystic-word" data-meaning="The Eternal Order; the absolute set of duties and cosmic laws underlying existence.">Sanatana Dharma</span>, the Rishis (sages) of ancient India held a vastly different, more profound understanding of human existence.
+            </p>
+
+            <p class="reveal-text">
+                They did not see a separation between the flesh and the soul. Instead, they observed a magnificent, interconnected symphony. According to Vedic philosophy, what we perceive as the 'body' is merely the grossest, most visible manifestation of our consciousness. Every thought that flickers through your mind, every emotion that stirs within your heart, sends a ripple through the physical vessel. Today, the cutting-edge fields of neuroscience and psychoneuroimmunology are proving exactly what the <span class="mystic-word" data-meaning="Ancient Sanskrit texts that contain some of the central philosophical concepts of Hinduism.">Upanishads</span> stated thousands of years ago: the mind and the body are undeniably, inextricably one.
+            </p>
+
+            <h3 class="text-2xl sm:text-3xl font-bold mt-16 mb-8 text-[#8b0000] text-left reveal-text">The Architecture of Being: The Five Koshas</h3>
+            
+            <p class="reveal-text">
+                To truly comprehend this connection, we must look to the <i>Taittiriya Upanishad</i>, which introduces the concept of the <span class="mystic-word" data-meaning="The 'Five Sheaths' that cover the true Self (Atman), ranging from physical to blissful.">Pancha Kosha</span>. The physical body, made of the food we consume, is known as the <i>Annamaya Kosha</i>. But surrounding and interpenetrating this physical shell is the <i>Pranamaya Kosha</i> (the energy body), and the <i>Manomaya Kosha</i> (the mental and emotional body).
+            </p>
+
+            <p class="reveal-text">
+                When a person experiences severe stress, anxiety, or grief in the mind, this turbulence does not simply vanish. It filters down. It disrupts the divine flow of <span class="mystic-word" data-meaning="The universal life force or vital energy that flows through the body's channels (Nadis).">Prana</span>, which subsequently manifests as disease, tension, and pain in the physical body. Modern doctors refer to this as psychosomatic illness; our ancestors understood it as a disturbance in the divine flow of energy.
+            </p>
+
+            <div class="my-14 p-8 sm:p-10 border-y-2 border-[#8b0000]/30 bg-[rgba(139,0,0,0.03)] text-center reveal-text relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-50"></div>
+                <div class="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--gold)] to-transparent opacity-50"></div>
+                <i class="text-xl md:text-3xl leading-relaxed text-[#4a2e1b] font-semibold block mb-6 italic drop-shadow-sm">
+                    "As is the human body, so is the cosmic body.<br>As is the human mind, so is the cosmic mind.<br>As is the microcosm, so is the macrocosm."
+                </i>
+                <span class="inline-block text-xs font-bold uppercase tracking-[0.2em] text-[#8b0000]">— The Upanishads</span>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-bold mt-16 mb-8 text-[#8b0000] text-left reveal-text">The Chemical Messengers of Karma</h3>
+
+            <p class="reveal-text">
+                In contemporary science, we have identified the biological bridges between thought and flesh: neurotransmitters and hormones. When your mind perceives a threat—even a psychological one like an upcoming exam or a financial worry—the brain's amygdala sounds an alarm. The body reacts instantly, flooding your bloodstream with cortisol and adrenaline. Your heart rate accelerates, your digestion halts, and your immune system suppresses itself. Your body treats a stressful thought exactly the same way it treats a physical predator.
+            </p>
+
+            <p class="reveal-text">
+                Conversely, when the mind engages in prayer, deep meditation, or simple acts of kindness, the brain releases a flood of healing chemicals. These molecules lower blood pressure, reduce inflammation, and enhance cellular repair. In essence, positive, <span class="mystic-word" data-meaning="A state of mind characterized by purity, harmony, balance, and illumination.">Sattvic</span> thoughts physically heal the body at a microscopic level. Our thoughts are not just fleeting ideas; they are biological instructions sent to our cells.
+            </p>
+
+            <div class="mandala-divider reveal-text">
+                <i class="fa-solid fa-om text-2xl" style="animation: none;"></i>
+            </div>
+
+            <h3 class="text-2xl sm:text-3xl font-bold mt-12 mb-8 text-[#8b0000] text-left reveal-text">Cultivating the Divine Vessel</h3>
+
+            <p class="reveal-text">
+                Understanding the profound connection between mind and body shifts our perspective entirely. Taking care of your physical body through pure food, regular yoga, and rest is no longer just a matter of health—it becomes a spiritual discipline, a way of honoring the divine vessel that houses your consciousness. Similarly, taking care of your mind through meditation, reading sacred texts, and fostering a loving community is a direct investment in your physical vitality.
+            </p>
+
+            <p class="reveal-text">
+                The next time you feel a physical ache, pause and ask yourself: <i>What is my mind carrying that my body is trying to process?</i> Remember that you are not a machine. You are a living, breathing ecosystem where every thought is a seed, and your body is the garden. Let us plant seeds of peace, devotion, and truth, and watch as our physical vessels bloom with divine health.
+            </p>
+
+            <p class="text-center font-bold text-2xl mt-20 mb-8 uppercase tracking-[0.4em] text-[#8b0000] reveal-text">
+                Om Shanti, Shanti, Shanti.
+            </p>
+
+            <!-- Publisher Info Box -->
+            <div class="mt-20 flex flex-col sm:flex-row items-center justify-between border-t border-[var(--ink)] pt-10 gap-6 reveal-text">
+                <div class="flex items-center gap-5 sm:gap-6">
+                    <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border border-[var(--ink)] shrink-0 p-1">
+                        <div class="w-full h-full rounded-full overflow-hidden">
+                            <img src="bhspct-official-logo-v2.jpeg" onerror="this.src='https://ui-avatars.com/api/?name=BHP&background=8B0000&color=FDE6C8'" alt="BHSPCT Logo" class="w-full h-full object-cover grayscale opacity-90 hover:grayscale-0 transition-all duration-500">
+                        </div>
+                    </div>
+                    <div class="text-center sm:text-left">
+                        <h4 class="font-bold text-lg sm:text-xl text-[#8b0000] tracking-[0.15em] uppercase heading-font mb-1">Wisdom Archives</h4>
+                        <p class="text-xs sm:text-sm font-medium text-[#5c3a21]">Preserved by the Bangladesh Hindu Students Parishad,<br>Chawkbazar Thana Branch.</p>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Cinematic Text Reveal on Scroll
+            const revealElements = document.querySelectorAll('.reveal-text');
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add visible class when element comes into viewport
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px" // Trigger slightly before it hits the bottom
+            });
+
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // 2. Chakra Alignment Tracker Logic
+            const contentArea = document.getElementById('scroll-content');
+            const pranaFlow = document.getElementById('prana-flow');
+            const chakras = document.querySelectorAll('.chakra');
+            
+            window.addEventListener('scroll', () => {
+                if(window.innerWidth < 1024) return; // Ignore on mobile
+                
+                const rect = contentArea.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                // Calculate scroll percentage through the document
+                let scrolled = windowHeight - rect.top - 200; // Offset for better timing
+                let total = rect.height;
+                let percentage = (scrolled / total) * 100;
+                
+                percentage = Math.max(0, Math.min(100, percentage));
+                pranaFlow.style.height = `${percentage}%`;
+
+                // Ignite Chakras based on percentage
+                const triggers = [10, 25, 40, 55, 70, 85, 95]; // Scroll % points for each chakra
+                
+                chakras.forEach((chakra, index) => {
+                    if (percentage >= triggers[index]) {
+                        chakra.classList.add('active');
+                    } else {
+                        chakra.classList.remove('active');
+                    }
+                });
+            });
+
+            // 3. Ambient Prana Dust Particles
+            const particleContainer = document.getElementById('particles');
+            // Keep particle count low to ensure smooth scrolling
+            const particleCount = window.innerWidth < 768 ? 15 : 25; 
+
+            for (let i = 0; i < particleCount; i++) {
+                createParticle();
+            }
+
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.classList.add('dust-particle');
+                
+                const size = Math.random() * 4 + 1; 
+                const left = Math.random() * 100; 
+                const duration = Math.random() * 10 + 8; 
+                const delay = Math.random() * 10; 
+
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}vw`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+
+                particleContainer.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                    createParticle();
+                }, (duration + delay) * 1000);
+            }
+        });
+    </script>
+</body>
+</html>
